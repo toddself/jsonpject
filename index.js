@@ -9,6 +9,16 @@
 var url = require('url');
 var qstring = require('querystring');
 
+/**
+ * Return a bunch of JSONP info if necessary from a remote script tag
+ * @method jsonpject
+ * @param  {String}   remote_url The URL of your JSONP script
+ * @param  {Function} cb         The callback to invoke when the JSONP script has finished loading
+ * @return {Object}
+ *         @param {String}    fn_name The name of the JSONP-callback to attach to the `window` object
+ *         @param {Function}  fn      The JSONP-callback
+ *         @param {String}    url     The JSONP-replaced URL for injecting
+ */
 module.exports = function jsonpject(remote_url, cb){
   var fn_name;
   var new_url = remote_url;
@@ -31,7 +41,7 @@ module.exports = function jsonpject(remote_url, cb){
     urls.query = qstring.stringify(queries);
     new_url = url.format(urls);
     fn = function(){
-        cb.call(window);
+        cb.apply(window, Array.prototype.slice(arguments, 0));
     };
   }
 

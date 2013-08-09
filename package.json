@@ -4,7 +4,7 @@
   "description": "Provide a JSONP callback if necessary on a remote loaded script",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "./node_modules/.bin/grunt test"
   },
   "repository": {
     "type": "git",
