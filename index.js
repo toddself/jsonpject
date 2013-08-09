@@ -9,18 +9,27 @@
 var url = require('url');
 var qstring = require('querystring');
 
-module.exports = function jsonpject(url, cb){
+module.exports = function jsonpject(remote_url, cb){
   var fn_name;
-  var new_url = url;
+  var new_url = remote_url;
   var fn = function(){};
-  var url_parts = url.parse(url);
-  var query_parts = qstring.parse(url_parts.query);
+  var urls = url.parse(remote_url);
+  var queries = qstring.parse(urls.query);
 
-  if('callback' in Object.keys(query_parts)){
-    fn_name = 'bromote_'+require('randomstring').generate(7);
-    query_parts.callback = fn_name;
-    url_parts.query = qstring.stringify(query_parts);
-    new_url = url.format(url_parts);
+  if(typeof cb !== 'function'){
+    throw new Error("Callback must be a function");
+  }
+
+  if('callback' in queries){
+    if(queries.callback === '?'){
+      fn_name = 'jsonpject_'+require('randomstring').generate(7);
+      queries.callback = fn_name;
+    } else {
+      fn_name = queries.callback;
+    }
+
+    urls.query = qstring.stringify(queries);
+    new_url = url.format(urls);
     fn = function(){
         cb.call(window);
     };
