@@ -1,0 +1,31 @@
+{
+  "name": "jsonpject",
+  "version": "0.1.0",
+  "description": "Provide a JSONP callback if necessary on a remote loaded script",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CondeNast/jsonpject"
+  },
+  "keywords": [
+    "jsonp",
+    "bromote",
+    "browserify",
+    "ajax",
+    "script.js"
+  ],
+  "author": "Todd Kennedy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CondeNast/jsonpject/issues"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.2",
+    "grunt-cli": "~0.1.9",
+    "grunt": "~0.4.1",
+    "grunt-simple-mocha": "~0.4.0"
+  }
+}
