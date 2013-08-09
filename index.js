@@ -36,15 +36,16 @@ module.exports = function jsonpject(remote_url, cb){
     } else {
       fn_name = queries.callback;
     }
-
-    urls.query = qstring.stringify(queries);
+    
+    // http://nodejs.org/api/url.html: search is prefered over query, so we use search otherwise
+    // we'd have to do urls.search = undefined as well
+    urls.search = qstring.stringify(queries);
     remote_url = url.format(urls);
+
     fn = function(){
         cb.apply(window, Array.prototype.slice(arguments, 0));
     };
   }
-
-  console.log(remote_url);
 
   return {
     fn_name: fn_name,

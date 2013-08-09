@@ -11,6 +11,8 @@
 
 var jsonpject = require('../index');
 var expect = require('chai').expect;
+var url = require('url');
+var qstring = require('querystring');
 var cb = function(){};
 
 describe('JSONPject', function(){
@@ -19,6 +21,13 @@ describe('JSONPject', function(){
         var jsonp = jsonpject(url, cb);
         expect(jsonp.fn_name).to.be.undefined;
         expect(jsonp.fn).to.a('function');
+    });
+
+    it('Should return a JSONP implementation with the URL altered', function(){
+        var test_url = 'test.js?callback=?';
+        var jsonp = jsonpject(test_url, cb);
+        var qs = qstring.parse(url.parse(jsonp.url).query);
+        expect(qs.callback).to.not.equal('?');
     });
 
     it('Should return a JSONP implemenation with a generated name', function(){
