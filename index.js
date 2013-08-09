@@ -21,7 +21,6 @@ var qstring = require('querystring');
  */
 module.exports = function jsonpject(remote_url, cb){
   var fn_name;
-  var new_url = remote_url;
   var fn = function(){};
   var urls = url.parse(remote_url);
   var queries = qstring.parse(urls.query);
@@ -39,15 +38,17 @@ module.exports = function jsonpject(remote_url, cb){
     }
 
     urls.query = qstring.stringify(queries);
-    new_url = url.format(urls);
+    remote_url = url.format(urls);
     fn = function(){
         cb.apply(window, Array.prototype.slice(arguments, 0));
     };
   }
 
+  console.log(remote_url);
+
   return {
     fn_name: fn_name,
     fn: fn,
-    url: new_url
+    url: remote_url
   };
 };
