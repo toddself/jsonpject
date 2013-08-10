@@ -1,6 +1,6 @@
 {
   "name": "jsonpject",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Provide a JSONP callback if necessary on a remote loaded script",
   "main": "index.js",
   "scripts": {
