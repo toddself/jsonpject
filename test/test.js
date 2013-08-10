@@ -19,7 +19,7 @@ describe('JSONPject', function(){
     it('Should return no JSONP implementation', function(){
         var url = 'test.js';
         var jsonp = jsonpject(url, cb);
-        expect(jsonp.fn_name).to.be.undefined;
+        expect(jsonp.fnName).to.be.undefined;
         expect(jsonp.fn).to.a('function');
     });
 
@@ -33,8 +33,8 @@ describe('JSONPject', function(){
     it('Should return a JSONP implemenation with a generated name', function(){
         var url = 'test.js?callback=?';
         var jsonp = jsonpject(url, cb);
-        expect(jsonp.fn_name).to.not.be.undefined;
-        expect(jsonp.fn_name).to.not.equal('?');
+        expect(jsonp.fnName).to.not.be.undefined;
+        expect(jsonp.fnName).to.not.equal('?');
         expect(jsonp.fn).to.be.a('function');
     });
 
@@ -42,7 +42,7 @@ describe('JSONPject', function(){
         var cb_name = 'testing1234';
         var url = 'test.js?callback='+cb_name;
         var jsonp = jsonpject(url, cb);
-        expect(jsonp.fn_name).to.equal(cb_name);
+        expect(jsonp.fnName).to.equal(cb_name);
     });
 
     it('Should throw an error if the callback is not typeof function', function(){

@@ -20,7 +20,7 @@ var qstring = require('querystring');
  *         @param {String}    url     The JSONP-replaced URL for injecting
  */
 module.exports = function jsonpject(remote_url, cb){
-  var fn_name;
+  var fnName;
   var fn = function(){};
   var urls = url.parse(remote_url);
   var queries = qstring.parse(urls.query);
@@ -31,10 +31,10 @@ module.exports = function jsonpject(remote_url, cb){
 
   if('callback' in queries){
     if(queries.callback === '?'){
-      fn_name = 'jsonpject_'+require('randomstring').generate(7);
-      queries.callback = fn_name;
+      fnName = 'jsonpject_'+require('randomstring').generate(7);
+      queries.callback = fnName;
     } else {
-      fn_name = queries.callback;
+      fnName = queries.callback;
     }
     
     // http://nodejs.org/api/url.html: search is prefered over query, so we use search otherwise
@@ -48,7 +48,7 @@ module.exports = function jsonpject(remote_url, cb){
   }
 
   return {
-    fn_name: fn_name,
+    fnName: fnName,
     fn: fn,
     url: remote_url
   };
