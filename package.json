@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:CondeNast/jsonpject"
+    "url": "git@github.com:toddself/jsonpject"
   },
   "keywords": [
     "jsonp",
@@ -20,7 +20,7 @@
   "author": "Todd Kennedy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CondeNast/jsonpject/issues"
+    "url": "https://github.com/toddself/jsonpject/issues"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.2",

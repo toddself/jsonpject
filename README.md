@@ -1,4 +1,4 @@
-[![build status](https://secure.travis-ci.org/CondeNast/jsonpject.png)](http://travis-ci.org/CondeNast/jsonpject)
+[![build status](https://secure.travis-ci.org/toddself/jsonpject.png)](http://travis-ci.org/toddself/jsonpject)
 # JSONPject
 
 Takes a JSONP script (one that has a callback=) in the query string and a callback and provides a new script URL specifiying a new callback which wraps the passed in callback.  The included script will call the provided callback, ensuring your callback is only called when the JSONP script has finished loading.
